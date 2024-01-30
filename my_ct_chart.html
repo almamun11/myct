@@ -1,0 +1,156 @@
+<!--
+	THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/en/editor.html?c=multiple-y-axis&code=MYewdgzgLgBKA2IBOEYF4YG0DkBiALAEwAcArAGL7YA0Me5AQgwMIAMpdteAogIL4BmAaWwBdANwAoEAAcoAS3DoYAb0kw4IREgBcm7RGrqYUEFoUy9ajRqhJ5AcwcBTXXQCGAD3kQaxjV4-AAog8mBQrlb-NlAAnjLOetjASCAQvtEAvsaZRhoO9gAmUTYw9g4AFlBJhKwApNg5eSZm8ABGIJ4lNgBmzu5QAK5IiarRGoUD7gBq8s4A7lYwEBUgiyZIg860I-6FAPJg8LF6Pe7wEM4wueNlztDIoyrLq-t2W9fNpRDuAG7OvAgAEkALbuFxLFZrPTvK7ZUrwz7GeDOFxgYpjUqTKDuPQ4AAqIBx8BgYEGILarhgIB6yyGhWc4V8XEJxNJ5MpSGptIi7mAFVczLoAGV6YzYKYTP1-VSkANFGImsZPLxvBA8dFrKUYLc4gkksABqjkLE_NqYIEIPj5MAANbdc3nRxgADq8igFQAMu5KfAYZtnLcbuaAPQhmAyEZQBSuAC0zset2xuKw2FqAEYqFwMyJs6x0wA2Gh0DMAdmLafzxArGYAnDXWIR04qEcZRM1YqqfBrSlrSnrRthfuctmbtWB3CDB6LBgymWPSjI0u7FGAkuUqgubE6HGBrXb1Rstl9t2rPWEnrcNFC3gGT6V4BfRbEUQ7zfpkHoEMgIJhWKIr2uIN7wtM8fWcP1MXfHpkDBaNIjoFRh3gLZMkac1EQ0YMbD7GJ4kHZDRxAicpySfFpQFFAtw0JcIBXcB10cTcQJ3PcbVtQ9YRAmkekuaoYGIVgWLPC832-V5_WPQDHzAZxn1fKD3w_NxvxQTB0wApTMJsbDSktb1fTE3pYIGCI3GwJCR2cNCgyyE9cNsfCkkI5xqNJSdpzFJkQ3IvlKOZW5aPotc6BRHooDc1j9w4yTtlufTRMU7Ub1ikCNBkuS4gUhztVUr8tB_TBCE099tKw4SfAMiCjI0GCkDgsykkslDrPQ7VtMRdtjEuex7h7HDbhIwdWXOdkKSpGk6VncUAvNAckjadwkDc5N-vNQhSFLWpaEIUt01rAQduIAsBALHba1LAta1oARWEu_BaFIVhntodMBEIAtCFuErys1QaPLIolRrJcauUm3kZSokD5roRblpAzs1SBdFnC6GB0xA1asEArahJgUtSAx_GCwe4nSeIQhSfTbaYAEC7vrsv7zSGpIZznCUQClPzZXlEA3Jh7AMrcxGfGRhk0cITGpjxYQADotpugtZZpgRSxu4gbrV6nZaIG7iqyNtJEycQgA
+	⚠ Please be aware that this chart is not an official demo of Apache ECharts but is made by user-generated code.
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    const colors = ['#4285F4', '#FBBC05 ', '#EA4335'];
+option = {
+  color: colors,
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+  grid: {
+    right: '20%'
+  },
+  toolbox: {
+    feature: {
+      dataView: { show: true, readOnly: false },
+      restore: { show: true },
+      saveAsImage: { show: true }
+    }
+  },
+  legend: {
+    data: ['Total number of students', 'Total number of teachers', 'Student to teacher ratio']
+  },
+  xAxis: [
+    {
+      
+      type: 'category',
+      axisTick: {
+        alignWithLabel: true
+      },
+      // prettier-ignore
+      data: ['2014', '2015', '2016', '2017', '2018', '2019', '2021']
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      name: 'Students',
+      position: 'right',
+      alignTicks: true,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: colors[0]
+        }
+      },
+      axisLabel: {
+        formatter: '{value}'
+      }
+    },
+    {
+      type: 'value',
+      name: 'Teachers',
+      position: 'right',
+      alignTicks: true,
+      offset: 80,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: colors[1]
+        }
+      },
+      axisLabel: {
+        formatter: '{value}'
+      }
+    },
+    {
+      type: 'value',
+      name: 'Students/Teachers',
+      position: 'left',
+      alignTicks: true,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: colors[2]
+        }
+      },
+      axisLabel: {
+        formatter: '{value}'
+      }
+    }
+  ],
+  series: [
+    {
+      name: 'Total number of students',
+      type: 'bar',
+      data: [
+        25720, 27193, 28636, 29769, 30764, 5000, 13262
+      ]
+    },
+    {
+      name: 'Total number of teachers',
+      type: 'bar',
+      yAxisIndex: 1,
+      data: [
+        720, 751, 764, 764, 824, 120, 397
+      ]
+    },
+    {
+      name: 'Student to teacher ratio',
+      type: 'line',
+      yAxisIndex: 2,
+      data: [35.72, 36.20, 37, 38, 37,12.42, 32]
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
